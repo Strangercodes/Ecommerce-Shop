@@ -1,3 +1,11 @@
 {
-  "buildCommand": "prisma generate"
+  "buildCommand": "prisma generate",
+  "cleanUrls": true,
+  "devCommand": "next dev",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
 }
