@@ -11,7 +11,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import Confetti from "react-dom-confetti";
 import { createCheckoutSession } from "./actions";
-import { useRouter } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import LoginModal from "@/components/LoginModal";
@@ -52,6 +52,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
           description: "There was an error on our end. Please try again.",
           variant: "destructive",
         });
+        return notFound();
       } else throw new Error("Unable to retrieve payment URL.");
     },
     onError: () => {
