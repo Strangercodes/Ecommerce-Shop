@@ -45,8 +45,14 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
     mutationKey: ["get-checkout-session"],
     mutationFn: createCheckoutSession,
     onSuccess: ({ url }) => {
-      if (url) router.push(url);
-      else throw new Error("Unable to retrieve payment URL.");
+      if (url) {
+        // router.push(url)
+        toast({
+          title: "Something went wrong",
+          description: "There was an error on our end. Please try again.",
+          variant: "destructive",
+        });
+      } else throw new Error("Unable to retrieve payment URL.");
     },
     onError: () => {
       toast({
