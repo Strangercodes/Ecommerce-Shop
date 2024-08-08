@@ -70,8 +70,14 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
       createPaymentSession({ configId: id });
     } else {
       // need to log in
-      localStorage.setItem("configurationId", id);
-      setIsLoginModalOpen(true);
+      // localStorage.setItem("configurationId", id);
+      // setIsLoginModalOpen(true);
+      toast({
+        title: "Something went wrong",
+        description: "There was an error on our end. Please try again.",
+        variant: "destructive",
+      });
+      return notFound();
     }
   };
 
